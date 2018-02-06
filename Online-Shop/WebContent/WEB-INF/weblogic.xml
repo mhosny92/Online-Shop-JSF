@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<weblogic-web-app
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd http://xmlns.oracle.com/weblogic/weblogic-web-app http://xmlns.oracle.com/weblogic/weblogic-web-app/1.8/weblogic-web-app.xsd"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.oracle.com/weblogic/weblogic-web-app">
+
+	<container-descriptor>
+		<prefer-web-inf-classes>false</prefer-web-inf-classes>
+		<prefer-application-packages>
+			<package-name>javax.faces.*</package-name>
+			<package-name>org.jboss.logging.*</package-name>
+		</prefer-application-packages>
+		<show-archived-real-path-enabled>true</show-archived-real-path-enabled>
+	</container-descriptor>
+
+	<context-root>Online-Shop</context-root>
+	<weblogic-version>12.2.1</weblogic-version>
+	<virtual-directory-mapping>
+     <local-path>C:/Users/Mahmoud/UploadedImages</local-path>
+        <url-pattern>/image/*</url-pattern>
+</virtual-directory-mapping>
+
+</weblogic-web-app>

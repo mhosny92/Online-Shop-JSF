@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<f:loadBundle basename="resources.application" var="msg" />
+
+<head>
+<title><h:outputText value="#{msg.addCategoryPageTitle}" /></title>
+</head>
+
+<h:body>
+	<h:form id="addCategoryForm" enctype="multipart/form-data">
+		<h:panelGrid id="addCategoryPanel" columns="2" cellpadding="5">
+			<h:outputLabel value="Category name: *" />
+			<h:inputText id="categoryName" value="#{addCategoryBB.category.name}" />
+
+			<h:outputLabel value="Category description" />
+			<h:inputTextarea id="categoryDesc"
+				value="#{addCategoryBB.category.desc}" />
+
+			<h:outputLabel value="Upload thumb *" />
+			<p:fileUpload mode="simple" value="#{addCategoryBB.thumb}"
+				required="true" requiredMessage="#{msg.requiredThumb}"></p:fileUpload>
+
+			<h:outputLabel value="Upload image *" />
+			<p:fileUpload mode="simple" value="#{addCategoryBB.image}"
+				required="true" requiredMessage="#{msg.requiredImage}"></p:fileUpload>
+
+			<h:outputLabel value="Active" />
+			<h:selectBooleanCheckbox value="#{addCategoryBB.category.active}" />
+
+		</h:panelGrid>
+		<h:commandButton action="#{addCategoryBB.saveCategory()}" value="Add"
+		execute="addCategoryPanel">
+		</h:commandButton>
+	</h:form>
+</h:body>
+</html>

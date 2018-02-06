@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<f:loadBundle basename="resources.application" var="msg" />
+
+<head>
+<title><h:outputText value="#{msg.addSupplierPageTitle}" /></title>
+</head>
+
+<h:body>
+	<h:panelGroup id="addSupplierPanelGroup">
+		<h:form id="addSupplierForm" enctype="multipart/form-data">
+			<h:panelGrid id="addSupplierPanel" columns="2" cellpadding="5">
+				<h:outputLabel value="Name: *" />
+				<h:inputText id="supplierName"
+					value="#{addSupplierBB.supplier.name}" />
+
+				<h:outputLabel value="Country" />
+				<h:inputTextarea id="supplierCountry"
+					value="#{addSupplierBB.supplier.country}" />
+
+				<h:outputLabel value="Country code" />
+				<h:inputTextarea id="supplierCountryCode"
+					value="#{addSupplierBB.supplier.countryCode}" />
+
+				<h:outputLabel value="Address" />
+				<h:inputTextarea id="supplierAddress"
+					value="#{addSupplierBB.supplier.address}" />
+			</h:panelGrid>
+			<h:outputLabel value="Email" />
+			<p:dataTable rowIndexVar="index"
+				value="#{addSupplierBB.supplier.email}" var="em">
+				<p:column>
+					<h:outputLabel value="Email #{index+1}" />
+				</p:column>
+				<p:column>
+					<h:inputText value="#{addSupplierBB.supplier.email[index]}"></h:inputText>
+				</p:column>
+			</p:dataTable>
+			<br />
+			<h:commandButton value="Add Email"
+				action="#{addSupplierBB.extendEmails}">
+				<f:ajax  execute="addSupplierForm"
+				render="addSupplierForm"/>
+				</h:commandButton>
+				
+			<br />
+
+			<h:outputLabel value="Phone" />
+			<p:dataTable value="#{addSupplierBB.supplier.phone}" var="ph"
+				rowIndexVar="index">
+				<p:column>
+					<p:outputLabel value="phone #{index+1}"></p:outputLabel>
+				</p:column>
+				<p:column>
+					<h:inputText value="#{addSupplierBB.supplier.phone[index]}" />
+				</p:column>
+			</p:dataTable>
+			<br />
+			<h:commandButton value="Add Phone"
+				action="#{addSupplierBB.extendPhones}">
+				<f:ajax execute="addSupplierForm"
+				render="addSupplierForm" />
+			</h:commandButton>
+			<br />
+			<h:commandButton action="#{addSupplierBB.saveSupplier()}" value="Add"
+				execute="addSupplierPanelGroup">
+			</h:commandButton>
+		</h:form>
+	</h:panelGroup>
+</h:body>
+</html>

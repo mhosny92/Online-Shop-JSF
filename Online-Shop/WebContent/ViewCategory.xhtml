@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<f:loadBundle basename="resources.application" var="msg" />
+
+<head>
+<title><h:outputText value="#{msg.welcomeTitle}" /></title>
+</head>
+
+<h:body>
+	<h:form>
+		<p:dataTable value="#{viewCategoryBB.categories}" var="cat" >
+			<f:facet name="header">Categories</f:facet>
+			<p:column headerText="#{msg.ID}">
+				<h:outputLabel value="#{cat.ID}" />
+			</p:column>
+			<p:column headerText="#{msg.name}">
+				<h:outputLabel value="#{cat.name}" />
+			</p:column>
+			<p:column headerText="#{msg.thumb}">
+				<p:graphicImage value="#{viewCategoryImageBB.thumb}">
+					<f:param name="cid" value="#{cat.ID}" />
+				</p:graphicImage>
+			</p:column>
+			<p:column headerText="#{msg.image}">
+				<p:graphicImage value="#{viewCategoryImageBB.image}">
+					<f:param name="cid" value="#{cat.ID}" />
+				</p:graphicImage>
+			</p:column>
+			<p:column headerText="#{msg.active}">
+				<h:selectBooleanCheckbox value="#{cat.active}" disabled="true" />
+			</p:column>
+		</p:dataTable>
+	</h:form>
+</h:body>
+</html>

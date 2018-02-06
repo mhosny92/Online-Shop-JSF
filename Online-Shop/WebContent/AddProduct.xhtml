@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<f:loadBundle basename="resources.application" var="msg" />
+
+<head>
+<title><h:outputText value="#{msg.addProductPageTitle}" /></title>
+</head>
+
+<h:body>
+	<h:panelGroup id="addProductPanelGroup">
+		<h:form id="addProductForm" enctype="multipart/form-data">
+			<h:panelGrid columns="2" cellpadding="5">
+
+				<h:outputLabel value="#{msg.name}" />
+				<h:inputText value="#{addProductBB.product.name}" />
+
+				<h:outputLabel value="#{msg.category}" />
+				<h:selectOneMenu value="#{addProductBB.product.category}"
+					id="selectOneCategory" converter="category" validator="category">
+					<f:selectItem itemLabel="#{msg.selectCategory}" itemValue="#{null}"
+						noSelectionOption="true"></f:selectItem>
+					<f:selectItems value="#{addProductBB.categories}" var="cat"
+						itemLabel="#{cat.name}" itemValue="#{cat}">
+					</f:selectItems>
+
+				</h:selectOneMenu>
+
+				<h:outputLabel value="#{msg.SKU}" />
+				<h:inputText value="#{addProductBB.product.SKU}" />
+
+				<h:outputLabel value="#{msg.price}" />
+				<h:inputText value="#{addProductBB.product.price}" />
+
+				<h:outputLabel value="#{msg.shortDesc}" />
+				<h:inputText value="#{addProductBB.product.shortDesc}" />
+
+				<h:outputLabel value="#{msg.longDesc}" />
+				<h:inputText value="#{addProductBB.product.longDesc}" />
+
+				<h:outputLabel value="#{msg.cartDesc}" />
+				<h:inputText value="#{addProductBB.product.cartDesc}" />
+
+				<h:outputLabel value="#{msg.weight}" />
+				<h:inputText value="#{addProductBB.product.weight}" />
+
+				<h:outputLabel value="Upload thumb *" />
+				<p:fileUpload mode="simple" value="#{addProductBB.thumb}"
+					required="true" requiredMessage="#{msg.requiredThumb}"></p:fileUpload>
+
+				<h:outputLabel value="#{msg.uploadImage}" />
+				<p:fileUpload mode="simple" value="#{addProductBB.image}"
+					required="true" requiredMessage="#{msg.requiredImage}"></p:fileUpload>
+
+				<h:outputLabel value="#{msg.active}" />
+				<h:selectBooleanCheckbox value="#{addProductBB.product.active}" />
+
+			</h:panelGrid>
+			<h:commandButton action="#{addProductBB.saveProduct()}" value="Add"
+				process="addProductPanelGroup"  render="msgs"/>
+		</h:form>
+		<h:messages id="msgs"/>
+	</h:panelGroup>
+</h:body>
+</html>

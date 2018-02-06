@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<f:loadBundle basename="resources.application" var="msg" />
+
+<head>
+<title><h:outputText value="#{msg.addOptionsGroupPageTitle}" /></title>
+</head>
+
+<h:body>
+	<h:panelGroup id="addOptionsGroupPanelGroup">
+		<h:form id="addOptionsGroupForm">
+			<h:panelGrid columns="2" cellpadding="5">
+
+				<h:outputLabel value="#{msg.name}" />
+				<h:inputText value="#{addOptionsGroupBB.optionsGroup.name}" />
+			</h:panelGrid>
+			<h:commandButton action="#{addOptionsGroupBB.saveOptionsGroup()}" value="Add"
+				process="addOptionsGroupPanelGroup"  render="msgs"/>
+		</h:form>
+		<h:messages id="msgs"/>
+	</h:panelGroup>
+</h:body>
+</html>

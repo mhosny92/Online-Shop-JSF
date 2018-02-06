@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<f:loadBundle basename="resources.application" var="msg" />
+
+<head>
+<title><h:outputText value="#{msg.welcomeTitle}" /></title>
+</head>
+
+<h:body>
+	<h:form>
+		<p:dataTable value="#{viewSupplierBB.suppliers}" var="sup" >
+			<f:facet name="header">Suppliers</f:facet>
+			<p:column headerText="#{msg.ID}">
+				<h:outputLabel value="#{sup.ID}" />
+			</p:column>
+			<p:column headerText="#{msg.name}">
+				<h:outputLabel value="#{sup.name}" />
+			</p:column>
+			<p:column headerText="#{msg.country}">
+				<h:outputLabel value="#{sup.country}" />
+			</p:column>
+			<p:column headerText="#{msg.address}">
+				<h:outputLabel value="#{sup.address}" />
+			</p:column>
+			<p:column headerText="#{msg.email}">
+				<ui:repeat value="#{sup.email}" var="em">
+					<h:outputLabel value="#{em}" />
+					<br />
+				</ui:repeat>
+			</p:column>
+			<p:column headerText="#{msg.phone}">
+				<ui:repeat value="#{sup.phone}" var="ph">
+					<h:outputLabel value="#{ph}" />
+					<br />
+				</ui:repeat>
+			</p:column>
+		</p:dataTable>
+	</h:form>
+</h:body>
+
+</html>

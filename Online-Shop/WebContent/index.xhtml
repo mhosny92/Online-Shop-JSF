@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<f:loadBundle basename="resources.application" var="msg" />
+
+<head>
+<title><h:outputText value="#{msg.welcomeTitle}" /></title>
+</head>
+
+<h:body>
+	<h:form>
+		<h:panelGrid columns="2" cellpadding="25" border="5">
+			<h:commandLink action="AddCategory.xhtml?faces-redirect=true"
+				value="Add Category" />
+			<h:commandLink action="ViewCategory.xhtml?faces-redirect=true"
+				value="View Categories" />
+			<h:commandLink action="AddSupplier.xhtml?faces-redirect=true"
+				value="Add Supplier" />
+			<h:commandLink action="ViewSupplier.xhtml?faces-redirect=true"
+				value="View Suppliers" />
+			<h:commandLink action="AddProduct.xhtml?faces-redirect=true"
+				value="Add Product" />
+			<h:commandLink action="ViewProduct.xhtml?faces-redirect=true"
+				value="View Products" />
+			<h:commandLink action="AddOptionsGroup.xhtml?faces-redirect=true"
+				value="Add Options Group" />
+			<h:commandLink action="ViewOptionsGroup.xhtml?faces-redirect=true"
+				value="View Options Group" />
+			<h:commandLink action="AddGroupOption.xhtml?faces-redirect=true"
+				value="Add Group Option" />
+			<h:commandLink action="ViewGroupOption.xhtml?faces-redirect=true"
+				value="View Group Options" />
+			<h:commandLink action="AddUser.xhtml?faces-redirect=true"
+				value="Add User" />
+			<h:commandLink action="ViewUser.xhtml?faces-redirect=true"
+				value="View Users" />
+			
+		</h:panelGrid>
+	</h:form>
+</h:body>
+</html>

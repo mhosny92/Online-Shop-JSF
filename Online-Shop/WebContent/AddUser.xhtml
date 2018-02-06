@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<f:loadBundle basename="resources.application" var="msg" />
+
+<head>
+<title><h:outputText value="#{msg.addUserPageTitle}" /></title>
+</head>
+
+<h:body>
+	<h:form id="addUserForm" enctype="multipart/form-data">
+		<h:panelGrid id="addUserPanel" columns="2" cellpadding="5">
+			<h:outputLabel value="User name: *" />
+			<h:inputText id="userName" value="#{addUserBB.user.name}" />
+
+			<h:outputLabel value="#{msg.email}" />
+			<h:inputText id="userEmail" value="#{addUserBB.user.email}" />
+
+			<h:outputLabel value="#{msg.address}" />
+			<h:inputText id="userAddress" value="#{addUserBB.user.address}" />
+
+			<h:outputLabel value="#{msg.city}" />
+			<h:inputText id="userCity" value="#{addUserBB.user.city}" />
+
+			<h:outputLabel value="#{msg.country}" />
+			<h:selectOneMenu value="#{addUserBB.user.country}">
+				<f:selectItem itemLabel="#{msg.selectCountry}" itemValue="#{null}"
+					noSelectionOption="true" />
+				<f:selectItems value="#{countriesBB.names}" var="name"
+					itemLabel="#{name}" itemValue="#{name}" />
+			</h:selectOneMenu>
+
+			<h:outputLabel value="#{msg.countryCode}" />
+			<h:inputText id="userCountryCode"
+				value="#{addUserBB.user.countryCode}" />
+
+			<h:outputLabel value="#{msg.password}" />
+			<h:inputSecret id="userPassword" value="#{addUserBB.user.password}" />
+
+			<h:outputLabel value="#{msg.state}" />
+			<h:inputText id="userState" value="#{addUserBB.user.state}" />
+
+			<h:outputLabel value="#{msg.zip}" />
+			<h:inputText id="userZip" value="#{addUserBB.user.zip}" />
+
+		</h:panelGrid>
+		<h:outputLabel value="#{msg.phone}" />
+		<p:dataTable rowIndexVar="index" id="userPhoneDataTable"
+			value="#{addUserBB.user.phone}" var="ph">
+			<p:column>
+				<h:outputLabel value="Phone #{index+1}" />
+			</p:column>
+			<p:column>
+				<h:inputText value="#{addUserBB.user.phone[index]}"></h:inputText>
+			</p:column>
+		</p:dataTable>
+		<h:commandButton value="Add Phone" action="#{addUserBB.extendPhones}">
+			<f:ajax execute="userPhoneDataTable" render="userPhoneDataTable" />
+		</h:commandButton>
+		<h:commandButton action="#{addUserBB.saveUser()}" value="Add"
+			execute="addUserPanel">
+		</h:commandButton>
+	</h:form>
+</h:body>
+</html>

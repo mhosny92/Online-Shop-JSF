@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<f:loadBundle basename="resources.application" var="msg" />
+
+<head>
+<title><h:outputText value="#{msg.addOptionPageTitle}" /></title>
+</head>
+
+<h:body>
+	<h:panelGroup id="addOptionPanelGroup">
+		<h:form id="addOptionForm">
+			<h:panelGrid columns="2" cellpadding="5">
+
+				<h:outputLabel value="#{msg.name}" />
+				<h:inputText value="#{addGroupOptionBB.option.name}" />
+
+				<h:outputLabel value="#{msg.category}" />
+				<h:selectOneMenu value="#{addGroupOptionBB.option.optionsGroup}"
+					id="selectOneOptionGroup" converter="optionsGroup">
+					<f:selectItem itemLabel="#{msg.selectOptionGroup}" itemValue="#{null}"
+						noSelectionOption="true"></f:selectItem>
+					<f:selectItems value="#{addGroupOptionBB.optionsGroup}" var="group"
+						itemLabel="#{group.name}" itemValue="#{group}">
+					</f:selectItems>
+
+				</h:selectOneMenu>
+			</h:panelGrid>
+			<h:commandButton action="#{addGroupOptionBB.saveOption()}" value="Add"
+				process="addOptionPanelGroup"  render="msgs"/>
+		</h:form>
+		<h:messages id="msgs"/>
+	</h:panelGroup>
+</h:body>
+</html>

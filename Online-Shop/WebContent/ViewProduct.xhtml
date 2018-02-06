@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<f:loadBundle basename="resources.application" var="msg" />
+
+<head>
+<title><h:outputText value="#{msg.welcomeTitle}" /></title>
+</head>
+
+<h:body>
+	<h:form>
+		<p:dataTable value="#{viewProductBB.products}" var="prod">
+			<f:facet name="header">Categories</f:facet>
+			<p:column headerText="#{msg.ID}">
+				<h:outputLabel value="#{prod.ID}" />
+			</p:column>
+			<p:column headerText="#{msg.name}">
+				<h:outputLabel value="#{prod.name}" />
+			</p:column>
+			<p:column headerText="#{msg.category}">
+				<h:outputLabel value="#{prod.category.name}" />
+			</p:column>
+			<p:column headerText="#{msg.price}">
+				<h:outputLabel value="#{prod.price}" />
+			</p:column>
+			<p:column headerText="#{msg.SKU}">
+				<h:outputLabel value="#{prod.SKU}" />
+			</p:column>
+			<p:column headerText="#{msg.shortDesc}">
+				<h:outputLabel value="#{prod.shortDesc}" />
+			</p:column>
+			<p:column headerText="#{msg.longDesc}">
+				<h:outputLabel value="#{prod.longDesc}" />
+			</p:column>
+			
+			<p:column headerText="#{msg.cartDesc}">
+				<h:outputLabel value="#{prod.cartDesc}" />
+			</p:column>
+			
+			<p:column headerText="#{msg.weight}">
+				<h:outputLabel value="#{prod.weight}" />
+			</p:column>
+			<p:column headerText="#{msg.thumb}">
+				<p:graphicImage value="#{viewProductImageBB.thumb}">
+					<f:param name="pid" value="#{prod.ID}" />
+				</p:graphicImage>
+			</p:column>
+			<p:column headerText="#{msg.image}">
+				<p:graphicImage value="#{viewProductImageBB.image}">
+					<f:param name="pid" value="#{prod.ID}" />
+				</p:graphicImage>
+			</p:column>
+			<p:column headerText="#{msg.active}">
+				<h:selectBooleanCheckbox value="#{prod.active}" disabled="true" />
+			</p:column>
+		</p:dataTable>
+	</h:form>
+</h:body>
+</html>
