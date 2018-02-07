@@ -9,12 +9,16 @@ import java.nio.file.Paths;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 
 import org.primefaces.model.UploadedFile;
 
+import com.onlineshop.backingbeans.user.OnlineUser;
 import com.onlineshop.constants.Constants;
+import com.onlineshop.model.User;
 
-public class OnlineStore2Util {
+// Contains common methods used by the whole system.
+public class OnlineStoreUtil {
 	
 
 	public static String uploadImage(UploadedFile image) throws Exception {
@@ -44,7 +48,12 @@ public class OnlineStore2Util {
 		FacesContext context = FacesContext.getCurrentInstance();
 		FacesMessage msg = new FacesMessage("Success", message);
 		context.addMessage(componentID, msg);
-
+	}
+	
+	public static User currentLoggedInUser(){
+		FacesContext context = FacesContext.getCurrentInstance();
+		HttpSession session = (HttpSession) context.getExternalContext().getSession(false);
+		return ((OnlineUser)session.getAttribute("onlineUser")).getUser();
 	}
 
 

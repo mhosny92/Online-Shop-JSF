@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+<f:loadBundle basename="resources.application" var="msg" />
+
+<h:head>
+<title><h:outputText value="#{msg.loginPageTitle}" /></title>
+</h:head>
+
+<h:body>
+	<h:form>
+		<h:panelGroup>
+		<h:panelGrid columns="2" cellpadding="5" cellspacing="20">
+			<h:outputLabel value="#{msg.username}" />
+			<h:inputText value="#{onlineUser.name}" required="true" requiredMessage="#{msg.usernameRequiredMessage}"></h:inputText>
+			
+			<h:outputLabel value="#{msg.password}"/>
+			<h:inputSecret value="#{onlineUser.pswd}" required="true" requiredMessage="#{msg.passwordRequiredMessage}"></h:inputSecret>
+			
+		</h:panelGrid>
+		<h:commandButton action="#{onlineUser.login()}" value="#{msg.login}" />
+		</h:panelGroup>
+	</h:form>
+</h:body>
+</html>

@@ -4,8 +4,8 @@
 package com.onlineshop.model;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -51,7 +51,7 @@ public class Category implements Serializable{
 	private boolean active;
 	
 	@OneToMany(mappedBy="category", targetEntity=Product.class)
-	private Set<Product> products = new HashSet<Product>();
+	private List<Product> products = new ArrayList<Product>();
 	
 	@SuppressWarnings("unused")
 	private void setID(int value) {
@@ -108,14 +108,14 @@ public class Category implements Serializable{
 	/**
 	 * @return the products
 	 */
-	public Set<Product> getProducts() {
+	public List<Product> getProducts() {
 		return products;
 	}
 
 	/**
 	 * @param products the products to set
 	 */
-	public void setProducts(Set<Product> products) {
+	public void setProducts(List<Product> products) {
 		this.products = products;
 	}
 

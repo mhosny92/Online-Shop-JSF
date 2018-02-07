@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<f:loadBundle basename="resources.application" var="msg" />
+
+<h:head>
+	<title><h:outputText value="#{msg.browseProductsTitlePage}" /></title>
+</h:head>
+
+<h:body>
+	<h:form id="browseProductsForm">
+	<h:panelGrid columns="2">
+		<h:outputLabel value="#{msg.category}" />
+		<h:selectOneMenu id="categorySelectOneMenu"
+			value="#{browseProducts.selectedCategory}" converter="category">
+			<f:selectItem itemLabel="#{msg.selectCategory}" itemValue="#{null}"
+				noSelectionOption="true" />
+			<f:selectItems value="#{browseProducts.categories}" var="prod"
+				itemLabel="#{prod.name}" itemValue="#{prod}" />
+			<f:ajax event="change"
+				listener="#{browseProducts.categoryChangedlistener()}"
+				render="browseProductsForm:productsDataTable" execute="@form"></f:ajax>
+		</h:selectOneMenu>
+		</h:panelGrid>
+		<p:dataTable id="productsDataTable" value="#{browseProducts.products}" var="prod">
+			<f:facet name="header"></f:facet>
+			<p:column headerText="#{msg.ID}">
+				<h:outputLabel value="#{prod.ID}" />
+			</p:column>
+			<p:column headerText="#{msg.name}">
+				<h:outputLabel value="#{prod.name}" />
+			</p:column>
+			<p:column headerText="#{msg.shortDesc}">
+				<h:outputLabel value="#{prod.shortDesc}" />
+			</p:column>
+			<p:column headerText="#{msg.thumb}">
+				<p:graphicImage value="#{viewProductImage.thumb}">
+					<f:param name="imageName" value="#{prod.thumb}" />
+				</p:graphicImage>
+			</p:column>
+			<p:column headerText="#{msg.price}">
+				<h:outputLabel value="#{prod.price}" />
+			</p:column>
+			<p:column headerText="#{msg.cart}">
+				<h:commandButton action="#{userCart.addProductToCart(prod)}" value="#{msg.addToCart}" />
+			</p:column>
+		</p:dataTable>
+	</h:form>
+</h:body>
+</html>

@@ -9,9 +9,9 @@
 
 <f:loadBundle basename="resources.application" var="msg" />
 
-<head>
+<h:head>
 <title><h:outputText value="#{msg.welcomeTitle}" /></title>
-</head>
+</h:head>
 
 <h:body>
 	<h:form>
@@ -24,13 +24,13 @@
 				<h:outputLabel value="#{cat.name}" />
 			</p:column>
 			<p:column headerText="#{msg.thumb}">
-				<p:graphicImage value="#{viewCategoryImageBB.thumb}">
-					<f:param name="cid" value="#{cat.ID}" />
+				<p:graphicImage value="#{viewCategoryImage.thumb}">
+					<f:param name="imageName" value="#{cat.thumb}" />
 				</p:graphicImage>
 			</p:column>
 			<p:column headerText="#{msg.image}">
-				<p:graphicImage value="#{viewCategoryImageBB.image}">
-					<f:param name="cid" value="#{cat.ID}" />
+				<p:graphicImage value="#{viewCategoryImage.image}">
+					<f:param name="imageName" value="#{cat.image}" />
 				</p:graphicImage>
 			</p:column>
 			<p:column headerText="#{msg.active}">

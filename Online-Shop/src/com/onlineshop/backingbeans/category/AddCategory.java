@@ -10,7 +10,7 @@ import org.primefaces.model.UploadedFile;
 
 import com.onlineshop.dao.CategoryDAO;
 import com.onlineshop.model.Category;
-import com.onlineshop.util.OnlineStore2Util;
+import com.onlineshop.util.OnlineStoreUtil;
 
 @SuppressWarnings("serial")
 @ManagedBean(name = "addCategoryBB")
@@ -30,8 +30,8 @@ public class AddCategory implements Serializable {
 
 	public void saveCategory() throws Exception {
 		try {
-			category.setImage(OnlineStore2Util.uploadImage(image));
-			category.setThumb(OnlineStore2Util.uploadImage(thumb));
+			category.setImage(OnlineStoreUtil.uploadImage(image));
+			category.setThumb(OnlineStoreUtil.uploadImage(thumb));
 			CategoryDAO.save(category);
 			category = CategoryDAO.createCategory();
 		} catch (Exception e) {

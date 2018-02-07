@@ -35,6 +35,16 @@ public class UserDAO extends CRUDBase implements Serializable{
 		HibernateUtil.commitAndCloseSession();
 		return uList;
 	}
+	
+	public static User validUser(String name, String pswd){
+		HibernateUtil.startSession();
+		String hql = "from User where name = :name and password = :pswd";
+		Query query = HibernateUtil.getSession().createQuery(hql);
+		query.setParameter("name", name).setParameter("pswd", pswd);
+		User user = (User)query.uniqueResult();
+		HibernateUtil.commitAndCloseSession();
+		return user;
+	}
 
 	public static User createUser() {
 		return new User();

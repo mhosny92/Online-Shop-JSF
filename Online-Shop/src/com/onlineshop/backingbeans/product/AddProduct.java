@@ -15,7 +15,7 @@ import com.onlineshop.dao.CategoryDAO;
 import com.onlineshop.dao.ProductDAO;
 import com.onlineshop.model.Category;
 import com.onlineshop.model.Product;
-import com.onlineshop.util.OnlineStore2Util;
+import com.onlineshop.util.OnlineStoreUtil;
 
 @SuppressWarnings("serial")
 @ManagedBean(name = "addProductBB")
@@ -39,8 +39,8 @@ public class AddProduct implements Serializable {
 
 	public void saveProduct() throws Exception {
 		try {
-			product.setImage(OnlineStore2Util.uploadImage(image));
-			product.setThumb(OnlineStore2Util.uploadImage(thumb));
+			product.setImage(OnlineStoreUtil.uploadImage(image));
+			product.setThumb(OnlineStoreUtil.uploadImage(thumb));
 			ProductDAO.save(product);
 			product = ProductDAO.createProduct();
 			FacesContext context = FacesContext.getCurrentInstance();

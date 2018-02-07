@@ -8,7 +8,7 @@ import javax.faces.bean.ViewScoped;
 
 import com.onlineshop.dao.OptionsGroupDAO;
 import com.onlineshop.model.OptionsGroup;
-import com.onlineshop.util.OnlineStore2Util;
+import com.onlineshop.util.OnlineStoreUtil;
 
 @SuppressWarnings("serial")
 @ManagedBean(name="addOptionsGroupBB")
@@ -24,7 +24,7 @@ public class AddOptionsGroup implements Serializable{
 	public void saveOptionsGroup() throws Exception{
 		try{
 			OptionsGroupDAO.save(optionsGroup);
-			OnlineStore2Util.sucessMessage("msgs", "Options group added");
+			OnlineStoreUtil.sucessMessage("msgs", "Options group added");
 			optionsGroup = OptionsGroupDAO.createOptionsGroup();
 		} catch (Exception e){
 			e.printStackTrace();

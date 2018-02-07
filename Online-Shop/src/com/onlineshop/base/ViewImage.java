@@ -11,13 +11,11 @@ import org.primefaces.model.StreamedContent;
 @SuppressWarnings("serial")
 public abstract class ViewImage implements Serializable{
 
-	protected enum type{thumb, image};
-	
 	
 	protected StreamedContent thumb;
 	protected StreamedContent image;
 	
-	protected abstract StreamedContent getImageContent(type t) throws Exception;
+	protected abstract StreamedContent getImageContent() throws Exception;
 	
 	/**
 	 * @return the image
@@ -27,7 +25,7 @@ public abstract class ViewImage implements Serializable{
 		if (FacesContext.getCurrentInstance().getCurrentPhaseId() == PhaseId.RENDER_RESPONSE){
 			return new DefaultStreamedContent();
 		}
-		return getImageContent(type.image);
+		return getImageContent();
 	}
 
 	/**
@@ -44,7 +42,7 @@ public abstract class ViewImage implements Serializable{
 		if (FacesContext.getCurrentInstance().getCurrentPhaseId() == PhaseId.RENDER_RESPONSE){
 			return new DefaultStreamedContent();
 		}
-		return getImageContent(type.thumb);
+		return getImageContent();
 	}
 	/**
 	 * @param thumb the thumb to set

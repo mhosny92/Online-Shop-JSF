@@ -9,9 +9,9 @@
 
 <f:loadBundle basename="resources.application" var="msg" />
 
-<head>
+<h:head>
 <title><h:outputText value="#{msg.welcomeTitle}" /></title>
-</head>
+</h:head>
 
 <h:body>
 	<h:form>
@@ -40,6 +40,7 @@
 				value="Add User" />
 			<h:commandLink action="ViewUser.xhtml?faces-redirect=true"
 				value="View Users" />
+				<h:commandLink action="BrowseProducts.xhtml?faces-redirect=true" value="Browse Products" />
 			
 		</h:panelGrid>
 	</h:form>

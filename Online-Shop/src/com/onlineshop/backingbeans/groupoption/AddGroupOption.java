@@ -14,7 +14,7 @@ import com.onlineshop.dao.GroupOptionDAO;
 import com.onlineshop.dao.OptionsGroupDAO;
 import com.onlineshop.model.GroupOption;
 import com.onlineshop.model.OptionsGroup;
-import com.onlineshop.util.OnlineStore2Util;
+import com.onlineshop.util.OnlineStoreUtil;
 
 /**
  * @author Mahmoud
@@ -42,7 +42,7 @@ public class AddGroupOption implements Serializable{
 	public void saveOption() throws Exception{
 		try{
 			GroupOptionDAO.save(option);
-			OnlineStore2Util.sucessMessage("msgs", "Option added");
+			OnlineStoreUtil.sucessMessage("msgs", "Option added");
 			option = GroupOptionDAO.createOption();
 		} catch (Exception e){
 			e.printStackTrace();

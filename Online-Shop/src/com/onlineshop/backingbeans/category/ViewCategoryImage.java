@@ -13,22 +13,16 @@ import org.primefaces.model.StreamedContent;
 
 import com.onlineshop.base.ViewImage;
 import com.onlineshop.constants.Constants;
-import com.onlineshop.dao.CategoryDAO;
-import com.onlineshop.model.Category;
 
 @SuppressWarnings("serial")
-@ManagedBean(name="viewCategoryImageBB")
+@ManagedBean(name="viewCategoryImage")
 @ApplicationScoped
 public class ViewCategoryImage extends ViewImage implements Serializable{
 
-	protected StreamedContent getImageContent(type t) throws Exception {	
+	protected StreamedContent getImageContent() throws Exception {	
 		String path = Constants.UPLOAD_DIR;
 		FacesContext context = FacesContext.getCurrentInstance();
-		String cid = context.getExternalContext().getRequestParameterMap().get("cid");
-		
-		Category c = CategoryDAO.loadCategoryByID(Integer.parseInt(cid));
-		String imageName = t==type.thumb? c.getThumb() : c.getImage();
-		
+		String imageName = context.getExternalContext().getRequestParameterMap().get("imageName");
 		return new DefaultStreamedContent(new FileInputStream(new File(path	, imageName)));
 	}
 	
